@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registration Form</title>
+         <style>
+            .col{
+              border: 3px solid white;
+             color: white;
+             font-family: verdana;
+            }
+              body {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(frm2.jpg);
+    height:100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+            .myForm {
+                font-family: verdana;
+                font-size: 0.8em;
+                width: 30em;
+                padding: 1em;
+                border: 1px solid #ccc;
+                color: black;
+                background-color: white;
+                }
+
+            .form{
+                position: absolute;
+                left:36%;
+                top:20%;
+            }
+    </style>
+    <script type="text/javascript">
+        
+         var phoneno = /^\d{10}$/;
+        var passlen = form.inputpass.value;
+        var minlen=6;
+        function checkForm(form){
+
+           if(form.inputname.value == ""){
+            alert("Please enter name...");
+            form.inputname.focus(); 
+            return false;
+           }
+
+           if(form.inputemail.value == ""){
+            alert("Please enter email-id...");
+            form.inputemail.focus();
+            return false;
+           }
+           if(form.inputpass.value == ""){
+            alert("Please enter Password...");
+            form.inputpass.focus();
+            return false;
+           }
+            if(form.inputrepass.value == ""){
+                alert("Please enter Re-enter Password...");
+                 form.inputpass.focus();
+                 return false;
+            }
+           if(form.inputpass.value != form.inputrepass.value){
+            alert("Password does not match...");
+            return false;
+           }else{
+            if(passlen.length < minlen){
+            alert("Password should be longer than 6 characters...");
+            return false;
+           }
+           }
+
+            if(!(document.getElementById("inputnum").value.match(phoneno))){
+                alert("phone number is wrong.");
+                return false;
+            }
+            alert("sucessfully Submitted");
+            return true;
+             
+        function blurFunction() 
+        { 
+          document.getElementById("inputname").style.background = "skyblue";
+         }
+
+        }
+
+        function displayRadioValue(){
+          var ele = document.getElementByName('gn');
+          if(ele[0].checked){
+                return "Male";
+          }
+          else{
+            return "Female";
+          }
+        }
+
+    </script>
+
+    </head>
+   
+    <body>
+        
+        <div class="form">
+            <fieldset class="col">
+            <legend><h2>R E G I S T R A T I O N</h2></legend>
+            <form class="myForm"cmethod="post" action="calc.html" onsubmit="return checkForm(this);">
+                <label>Name:<br><input type="text" size="45" name="inputname" required onblur="blurFunction()" onblur="blurFunction()">
+                            <br><br>
+                <label>Gender: 
+                <label>Male: <input type="radio" name="gn" id="inputgender">
+                <label>Female: <input type="radio" name="gn" id="inputgender">
+                <br><br>
+                <label>Email id:<br><input type="Email" size="45" name="inputemail">
+                            <br><br>
+                <label>Password: <br><input type="Password" pattern="[A-Za-Z1-9]{8}" size="45" name="inputpass">
+                            <br><br>            
+                <label>Re-Enter Password: <br><input type="Password" pattern="[A-Za-Z1-9]{8}" size="45" name="inputrepass">
+                            <br><br>
+                <label>Phone:<br><input type="tel" maxlength="10"  size="45" name="inputnum">
+                            <br><br>
+                <button>Submit</button>
+                <input type="reset" name="" value="Reset">
+
+            </form>  
+            </fieldset>      
+        </div>
+    </body>
+</html>
